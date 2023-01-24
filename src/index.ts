@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import orders from "./routes/orders";
+import users from "./routes/users";
+
 import products from "./routes/products";
 
 dotenv.config();
@@ -12,7 +14,7 @@ app.use(bodyParser.json());
 
 app.use("/orders", orders);
 app.use("products", products);
-// app.use('/users', users);
+app.use('/users', users);
 
 app.get("/", (_req, res) => {
   res.send("Welcome");

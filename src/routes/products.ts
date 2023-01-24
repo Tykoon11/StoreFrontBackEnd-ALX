@@ -1,5 +1,6 @@
 import express from "express";
 import { Product, ProductsStore } from "../models/products";
+import jwt from "jsonwebtoken";
 
 const products = express.Router();
 
