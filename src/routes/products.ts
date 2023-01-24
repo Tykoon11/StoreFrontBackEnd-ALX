@@ -32,7 +32,7 @@ products.post(
     const price = req.body.price as number;
     const category = req.body.category as string;
 
-    const create = {
+    const create: Product = {
       name: name,
       price: price,
       category: category,
@@ -45,3 +45,5 @@ products.post(
     }
   }
 );
+
+export default products;
