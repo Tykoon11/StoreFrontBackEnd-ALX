@@ -3,12 +3,15 @@ import { Order, OrderStore } from "../models/orders";
 
 const orders = express.Router();
 
-orders.get("/orders", async (req: express.Request, res: express.Response) => {
+orders.get("/show", async (req: express.Request, res: express.Response) => {
   const order = await new OrderStore();
   const userId = req.body.userId as number;
   try {
     const result = await order.show(userId);
+    res.send(result);
   } catch (err) {
     throw new Error(`unable to show this order ${err}`);
   }
 });
+
+export default orders;
