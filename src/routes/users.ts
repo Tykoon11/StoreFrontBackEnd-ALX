@@ -1,28 +1,40 @@
 import express from "express";
+import jwt from "jsonwebtoken";
 import { User, UsersStore } from "../models/users";
+import dotenv from "dotenv";
+import verifyToken from "../handlers/verifyToken";
 
 const users = express.Router();
+dotenv.config();
 
-users.get("/", async (req: express.Request, res: express.Response) => {
-  const user = await new UsersStore();
-  try {
-    const result = await user.index();
-    res.send(result);
-  } catch (err) {
-    res.send(`unable to get index ${err}`);
+users.get(
+  "/",
+  verifyToken,
+  async (req: express.Request, res: express.Response) => {
+    const user = await new UsersStore();
+    try {
+      const result = await user.index();
+      res.send(result);
+    } catch (err) {
+      res.send(`unable to get index ${err}`);
+    }
   }
-});
+);
 
-users.get("/show", async (req: express.Request, res: express.Response) => {
-  const user = await new UsersStore();
-  const id = req.body.id as number;
-  try {
-    const result = await user.show(id);
-    res.send(result);
-  } catch (err) {
-    res.send(`unable to show this user ${err}`);
+users.get(
+  "/show",
+  verifyToken,
+  async (req: express.Request, res: express.Response) => {
+    const user = await new UsersStore();
+    const id = req.body.id as number;
+    try {
+      const result = await user.show(id);
+      res.send(result);
+    } catch (err) {
+      res.send(`unable to show this user ${err}`);
+    }
   }
-});
+);
 
 users.post("/create", async (req: express.Request, res: express.Response) => {
   const user = await new UsersStore();
@@ -37,7 +49,11 @@ users.post("/create", async (req: express.Request, res: express.Response) => {
   };
   try {
     const result = await user.create(create);
-    res.send(result);
+    var token = jwt.sign(
+      { create: result },
+      process.env.TOKEN_SECRET as string // assigning a token on login
+    );
+    res.send(token);
   } catch (err) {
     res.send(`unable to create user ${err}`);
   }

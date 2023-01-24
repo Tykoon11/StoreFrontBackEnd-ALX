@@ -1,10 +1,11 @@
 import express from "express";
 import { Product, ProductsStore } from "../models/products";
-import jwt from "jsonwebtoken";
+import verifyToken from "../handlers/verifyToken";
+
 
 const products = express.Router();
 
-products.get("/index", async (req: express.Request, res: express.Response) => {
+products.get("/", async (req: express.Request, res: express.Response) => {
   const product = await new ProductsStore();
   try {
     const result = await product.index();
@@ -26,7 +27,7 @@ products.get("/show", async (req: express.Request, res: express.Response) => {
 });
 
 products.post(
-  "/create",
+  "/create", verifyToken,
   async (req: express.Request, res: express.Response) => {
     const product = await new ProductsStore();
     const name = req.body.name as string;
