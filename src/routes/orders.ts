@@ -10,7 +10,7 @@ orders.get("/show", async (req: express.Request, res: express.Response) => {
     const result = await order.show(userId);
     res.send(result);
   } catch (err) {
-    throw new Error(`unable to show this order ${err}`);
+    res.send(`unable to show this order ${err}`);
   }
 });
 
