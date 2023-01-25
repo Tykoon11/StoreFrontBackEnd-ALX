@@ -1,4 +1,3 @@
-import { resolve } from "path";
 import client from "../database";
 
 export type Order = {
