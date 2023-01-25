@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import orders from "./routes/orders";
 import users from "./routes/users";
-
+import ranks from "./routes/rankServices";
 import products from "./routes/products";
 
 dotenv.config();
@@ -14,7 +14,8 @@ app.use(bodyParser.json());
 
 app.use("/orders", orders);
 app.use("products", products);
-app.use('/users', users);
+app.use("/users", users);
+app.use("/ranks", ranks);
 
 app.get("/", (_req, res) => {
   res.send("Welcome");
