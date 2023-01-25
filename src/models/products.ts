@@ -53,7 +53,7 @@ export class ProductsStore {
       conn.release();
       return result.rows;
     } catch {
-      throw new Error(`cannot show top 5`);
+      throw new Error(`cannot show these products`);
     }
   }
 }

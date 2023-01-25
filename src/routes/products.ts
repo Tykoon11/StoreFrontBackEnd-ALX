@@ -30,7 +30,7 @@ products.post(
   verifyToken,
   async (req: express.Request, res: express.Response) => {
     const product = await new ProductsStore();
-    
+
     const name = req.body.name as string;
     const price = req.body.price as number;
     const category = req.body.category as string;
@@ -45,6 +45,21 @@ products.post(
       res.send(result);
     } catch (err) {
       res.send(`unable to create product ${err}`);
+    }
+  }
+);
+
+products.get(
+  "/rank-cat",
+  verifyToken,
+  async (req: express.Request, res: express.Response) => {
+    const product = await new ProductsStore();
+    const category = req.body.category as string;
+    try {
+      const result = await product.rankCat(category);
+      res.send(result);
+    } catch (err) {
+      res.send(`unable to get product ${err}`);
     }
   }
 );
