@@ -30,6 +30,7 @@ products.post(
   verifyToken,
   async (req: express.Request, res: express.Response) => {
     const product = await new ProductsStore();
+    
     const name = req.body.name as string;
     const price = req.body.price as number;
     const category = req.body.category as string;

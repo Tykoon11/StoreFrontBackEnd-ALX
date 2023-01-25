@@ -11,10 +11,15 @@ const app: express.Application = express();
 const port = process.env.PORT;
 
 app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
-app.use("/orders", orders);
-app.use("products", products);
 app.use("/users", users);
+app.use("/products", products);
+app.use("/orders", orders);
 app.use("/ranks", ranks);
 
 app.get("/", (_req, res) => {

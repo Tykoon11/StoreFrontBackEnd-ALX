@@ -38,17 +38,20 @@ users.get(
 
 users.post("/create", async (req: express.Request, res: express.Response) => {
   const user = await new UsersStore();
-  const firstName = req.body.firstName as string;
-  const lastName = req.body.lastName as string;
+  const firstname = req.body.firstname as string;
+  const lastname = req.body.lastname as string;
   const password = req.body.password as string;
 
   const create: User = {
-    firstName: firstName,
-    lastName: lastName,
+    firstname: firstname,
+    lastname: lastname,
     password: password,
   };
+
+  console.log(create);
   try {
     const result = await user.create(create);
+    console.log(result);
     var token = jwt.sign(
       { create: result },
       process.env.TOKEN_SECRET as string
