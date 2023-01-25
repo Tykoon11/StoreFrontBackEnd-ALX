@@ -45,12 +45,15 @@ export class ProductsStore {
     }
   }
 
-  // async topFive(price: number): Promise<Product> {
-  //   try{
-  //     const conn = await client.connect();
-  //     const sql = "SELECT * FROM "
-  //   }catch{
-  //     throw new Error(`cannot show top 5`)
-  //   }
-  // }
+  async rankCat(category: string): Promise<Product[]> {
+    try {
+      const conn = await client.connect();
+      const sql = "SELECT * FROM products WHERE category = ($1)";
+      const result = await conn.query(sql, [category]);
+      conn.release();
+      return result.rows;
+    } catch {
+      throw new Error(`cannot show top 5`);
+    }
+  }
 }
