@@ -44,6 +44,13 @@ export class ProductsStore {
       throw new Error(`cannot create product ${err} `);
     }
   }
+
+  // async topFive(price: number): Promise<Product> {
+  //   try{
+  //     const conn = await client.connect();
+  //     const sql = "SELECT * FROM "
+  //   }catch{
+  //     throw new Error(`cannot show top 5`)
+  //   }
+  // }
 }
-
-

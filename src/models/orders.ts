@@ -1,4 +1,3 @@
-import { IndexKind } from "typescript";
 import client from "../database";
 
 export type Order = {

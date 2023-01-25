@@ -2,7 +2,6 @@ import express from "express";
 import { Product, ProductsStore } from "../models/products";
 import verifyToken from "../handlers/verifyToken";
 
-
 const products = express.Router();
 
 products.get("/", async (req: express.Request, res: express.Response) => {
@@ -27,7 +26,8 @@ products.get("/show", async (req: express.Request, res: express.Response) => {
 });
 
 products.post(
-  "/create", verifyToken,
+  "/create",
+  verifyToken,
   async (req: express.Request, res: express.Response) => {
     const product = await new ProductsStore();
     const name = req.body.name as string;
