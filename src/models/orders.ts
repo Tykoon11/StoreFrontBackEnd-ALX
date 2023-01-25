@@ -1,9 +1,11 @@
 import client from "../database";
 
 export type Order = {
+  id?: number;
   productId: number;
   quantity: number;
   userId: number;
+  status: string;
 };
 
 export class OrderStore {
@@ -18,4 +20,6 @@ export class OrderStore {
       throw new Error(`cannot show orders ${err}`);
     }
   }
+
+  async completeOrder(userId: number): Promise<Order>;
 }

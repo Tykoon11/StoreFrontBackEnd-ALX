@@ -5,7 +5,7 @@ export class rankService {
     try {
       const conn = await client.connect();
       const sql =
-        "SELECT name, quantity FROM products INNER JOIN orders ON products.id = orders.product_id LIMIT 5";
+        "SELECT name, quantity FROM products INNER JOIN orders ON products.id = orders.product_id DESC LIMIT 5";
       const result = await conn.query(sql);
       conn.release();
       return result.rows;
