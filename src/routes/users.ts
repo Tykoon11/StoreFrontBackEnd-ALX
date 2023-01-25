@@ -51,7 +51,7 @@ users.post("/create", async (req: express.Request, res: express.Response) => {
     const result = await user.create(create);
     var token = jwt.sign(
       { create: result },
-      process.env.TOKEN_SECRET as string // assigning a token on login
+      process.env.TOKEN_SECRET as string
     );
     res.send(token);
   } catch (err) {

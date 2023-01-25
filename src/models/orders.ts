@@ -1,3 +1,4 @@
+import { resolve } from "path";
 import client from "../database";
 
 export type Order = {
@@ -21,5 +22,16 @@ export class OrderStore {
     }
   }
 
-  async completeOrder(userId: number): Promise<Order>;
+  async completeOrder(userId: number): Promise<Order[]> {
+    try {
+      const conn = await client.connect();
+      const sql =
+        "SELECT * FROM orders WHERE user_id = ($1) AND status = complete";
+      const result = await conn.query(sql, [userId]);
+      conn.release();
+      return result.rows;
+    } catch (err) {
+      throw new Error(`cannot show this user ${err}`);
+    }
+  }
 }
