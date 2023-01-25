@@ -27,6 +27,7 @@ orders.get(
     const userId = req.body.userId as number;
     try {
       const result = await order.completeOrder(userId);
+      res.send(result);
     } catch (err) {
       res.send(`unable to show orders ${err}`);
     }
