@@ -9,32 +9,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const products_1 = require("../../models/products");
-const store = new products_1.ProductsStore();
-describe("Products Model", () => {
+const orders_1 = require("../../models/orders");
+const store = new orders_1.OrderStore();
+describe("Order Model", () => {
     it("should have a create method", () => {
         expect(store.create).toBeDefined();
-    });
-    it("should have an index method", () => {
-        expect(store.index).toBeDefined();
     });
     it("should have a show method", () => {
         expect(store.show).toBeDefined();
     });
-    it("create method should create a product", () => __awaiter(void 0, void 0, void 0, function* () {
+    it("should have a completeOrder method", () => {
+        expect(store.completeOrder).toBeDefined();
+    });
+    it("should have an addProduct method", () => {
+        expect(store.addProduct).toBeDefined();
+    });
+    it("create method should create an order", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield store.create({
-            name: "iPhone 12",
-            price: parseInt("300"),
-            category: "electronics",
+            user_id: 1,
+            status: "complete",
         });
         expect({
-            name: result.name,
-            price: result.price,
-            category: result.category,
+            user_id: result.user_id,
+            status: result.status,
         }).toEqual({
-            name: "iPhone 12",
-            price: 300,
-            category: "electronics",
+            user_id: 1,
+            status: "complete",
         });
     }));
 });

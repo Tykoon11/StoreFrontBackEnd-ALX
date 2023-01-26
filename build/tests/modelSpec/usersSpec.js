@@ -12,6 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const users_1 = require("../../models/users");
 const store = new users_1.UsersStore();
 describe("Users Model", () => {
+    it("should have a create method", () => {
+        expect(store.create).toBeDefined();
+    });
+    it("should have an index method", () => {
+        expect(store.index).toBeDefined();
+    });
+    it("should have a show method", () => {
+        expect(store.show).toBeDefined();
+    });
     it("create method should create a user", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield store.create({
             firstname: "Nobleman",
@@ -26,10 +35,4 @@ describe("Users Model", () => {
             lastname: "Unachukwu",
         });
     }));
-    it("should have an index method", () => {
-        expect(store.index).toBeDefined();
-    });
-    it("should have a show method", () => {
-        expect(store.show).toBeDefined();
-    });
 });
