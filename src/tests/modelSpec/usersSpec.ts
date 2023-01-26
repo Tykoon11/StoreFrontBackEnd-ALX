@@ -1,4 +1,4 @@
-import { UsersStore } from "../../models/users"
+import { User, UsersStore } from "../../models/users"
 
 const store = new UsersStore()
 
@@ -27,6 +27,29 @@ describe("Users Model", () => {
     }).toEqual({
       firstname: "Nobleman",
       lastname: "Unachukwu",
+    })
+    console.log(result)
+  })
+
+  it("index method should return a list of users", async () => {
+    const result = await store.index()
+    expect(result).toEqual([
+      {
+        id: 1,
+        firstname: "Nobleman",
+        lastname: "Unachukwu",
+        password: "password",
+      },
+    ])
+  })
+
+  it("show method should return the correct user", async () => {
+    const result = await store.show(1)
+    expect(result).toEqual({
+      id: 1,
+      firstname: "Nobleman",
+      lastname: "Unachukwu",
+      password: "password",
     })
   })
 })

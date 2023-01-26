@@ -34,5 +34,26 @@ describe("Users Model", () => {
             firstname: "Nobleman",
             lastname: "Unachukwu",
         });
+        console.log(result);
+    }));
+    // it("index method should return a list of books", async () => {
+    //   const result = await store.index()
+    //   expect([
+    //     { firstname: result.firstname, lastname: result.lastname },
+    //   ]).toEqual([
+    //     {
+    //       firstname: "Nobleman",
+    //       lastname: "Unachukwu",
+    //     },
+    //   ])
+    // })
+    it("show method should return the correct user", () => __awaiter(void 0, void 0, void 0, function* () {
+        const result = yield store.show(20);
+        expect(result).toEqual({
+            id: 20,
+            firstname: "Nobleman",
+            lastname: "Unachukwu",
+            password: "password",
+        });
     }));
 });
