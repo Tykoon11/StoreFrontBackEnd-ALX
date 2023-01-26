@@ -39,15 +39,11 @@ orders.post(
   verifyToken,
   async (req: express.Request, res: express.Response) => {
     const order = await new OrderStore()
-    const productId = req.body.productId as number
-    const quantity = req.body.quantity as number
     const userId = req.body.userId as number
     const status = req.body.status as string
 
     const create: Order = {
-      productId: productId,
-      quantity: quantity,
-      userId: userId,
+      user_id: userId,
       status: status,
     }
     try {

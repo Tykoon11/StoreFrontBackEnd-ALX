@@ -9,7 +9,7 @@
     "prettier": "prettier --config .prettierrc './src/**/*.ts' --write",
     "build": "npx tsc",
     "jasmine": "jasmine",
-    "test": "ENV=test db-migrate --env test up && jasmine && db-migrate db:drop test"
+    "test": "ENV=test && npx tsc && db-migrate --env test up && jasmine && db-migrate db:drop test"
   },
   "keywords": [],
   "author": "",
