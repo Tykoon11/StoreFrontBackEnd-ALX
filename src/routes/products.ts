@@ -50,7 +50,7 @@ products.post(
 )
 
 products.get(
-  "/rank-cat",
+  "/rankcat",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
     const product = await new ProductsStore()

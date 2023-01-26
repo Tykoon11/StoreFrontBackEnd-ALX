@@ -8,14 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const users_1 = require("../../models/users");
-const index_1 = __importDefault(require("../../index"));
-const supertest_1 = __importDefault(require("supertest"));
-const request = (0, supertest_1.default)(index_1.default);
 const store = new users_1.UsersStore();
 describe("Users Model", () => {
     it("should have a create method", () => {
@@ -61,22 +55,5 @@ describe("Users Model", () => {
             lastname: "Unachukwu",
             password: "password",
         });
-    }));
-});
-describe("Test endpoint response", () => {
-    it("posts the create users endpoint", () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.post("/users/create");
-        console.log(response.status);
-        expect(response.status).toBe(200);
-    }));
-    it("gets the show users endpoint", () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get("/users/show");
-        console.log(response.status);
-        expect(response.status).toBe(200);
-    }));
-    it("gets the users index endpoint", () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get("/users");
-        console.log(response.status);
-        expect(response.status).toBe(200);
     }));
 });

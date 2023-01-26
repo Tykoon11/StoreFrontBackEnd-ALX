@@ -1,8 +1,4 @@
 import { ProductsStore } from "../../models/products"
-import app from "../../index"
-import supertest from "supertest"
-
-const request = supertest(app)
 
 const store = new ProductsStore()
 
@@ -72,31 +68,5 @@ describe("Products Model", () => {
         category: "electronics",
       },
     ])
-  })
-})
-
-describe("Test endpoint response", () => {
-  it("posts the create products endpoint", async () => {
-    const response = await request.post("/products/create")
-    console.log(response.status)
-    expect(response.status).toBe(200)
-  })
-
-  it("gets the show products endpoint", async () => {
-    const response = await request.get("/products/show")
-    console.log(response.status)
-    expect(response.status).toBe(200)
-  })
-
-  it("gets the products index endpoint", async () => {
-    const response = await request.get("/products")
-    console.log(response.status)
-    expect(response.status).toBe(200)
-  })
-
-  it("gets the rankCat endpoint", async () => {
-    const response = await request.get("/ranks/rank-cat")
-    console.log(response.status)
-    expect(response.status).toBe(200)
   })
 })

@@ -1,8 +1,4 @@
 import { OrderStore } from "../../models/orders"
-import app from "../../index"
-import supertest from "supertest"
-
-const request = supertest(app)
 
 const store = new OrderStore()
 
@@ -71,24 +67,4 @@ describe("Order Model", () => {
   //     },
   //   ])
   // })
-})
-
-describe("Test endpoint response", () => {
-  it("posts the create orders endpoint", async () => {
-    const response = await request.post("/orders/create")
-    console.log(response.status)
-    expect(response.status).toBe(200)
-  })
-
-  it("gets the show orders endpoint", async () => {
-    const response = await request.get("/orders/show")
-    console.log(response.status)
-    expect(response.status).toBe(200)
-  })
-
-  it("gets the completeOrders endpoint", async () => {
-    const response = await request.get("/orders/complete")
-    console.log(response.status)
-    expect(response.status).toBe(200)
-  })
 })

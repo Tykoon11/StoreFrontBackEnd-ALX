@@ -55,7 +55,7 @@ products.post("/create", verifyToken_1.default, (req, res) => __awaiter(void 0, 
         res.send(`unable to create product ${err}`);
     }
 }));
-products.get("/rank-cat", verifyToken_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+products.get("/rankcat", verifyToken_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const product = yield new products_1.ProductsStore();
     const category = req.body.category;
     try {
