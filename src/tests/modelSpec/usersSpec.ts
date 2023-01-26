@@ -1,4 +1,8 @@
-import { User, UsersStore } from "../../models/users"
+import { UsersStore } from "../../models/users"
+import app from "../../index"
+import supertest from "supertest"
+
+const request = supertest(app)
 
 const store = new UsersStore()
 
@@ -51,5 +55,25 @@ describe("Users Model", () => {
       lastname: "Unachukwu",
       password: "password",
     })
+  })
+})
+
+describe("Test endpoint response", () => {
+  it("posts the create users endpoint", async () => {
+    const response = await request.post("/users/create")
+    console.log(response.status)
+    expect(response.status).toBe(200)
+  })
+
+  it("gets the show users endpoint", async () => {
+    const response = await request.get("/users/show")
+    console.log(response.status)
+    expect(response.status).toBe(200)
+  })
+
+  it("gets the users index endpoint", async () => {
+    const response = await request.get("/users")
+    console.log(response.status)
+    expect(response.status).toBe(200)
   })
 })

@@ -29,3 +29,5 @@ app.get("/", (_req, res) => {
 app.listen(port, () => {
   console.log(`Server listening on ${port}`)
 })
+
+export default app
