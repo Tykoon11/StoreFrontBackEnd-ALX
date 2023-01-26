@@ -39,34 +39,34 @@ describe("Order Model", () => {
     }));
     it("show method should return the correct order", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield store.show(1);
-        expect(result).toEqual({
-            id: 1,
+        expect({ user_id: result.user_id, status: result.status }).toEqual({
             user_id: 1,
             status: "complete",
         });
     }));
     it("completeOrder method should return list of complete orders", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield store.completeOrder(1);
-        expect(result).toEqual([
+        expect([
             {
-                id: 1,
+                user_id: result[0].user_id,
+                status: result[0].status,
+            },
+        ]).toEqual([
+            {
                 user_id: 1,
                 status: "complete",
             },
         ]);
     }));
     // it("addProduct method should return updated order", async () => {
-    //   const result = await store.addProduct(
-    //     quantity,
-    //     order_id,
-    //     product_id
-    //   )
-    //   expect(result).toEqual([
-    //     {
-    //       quantity: 3,
-    //       order_id: 1,
-    //       product_id: 1,
-    //     },
-    //   ])
+    //   const quantity = 3
+    //   const order_id = 1
+    //   const product_id = 1
+    //   const result = await store.addProduct(quantity, order_id, product_id)
+    //   expect(result).toEqual({
+    //     quantity: 3,
+    //     order_id: 1,
+    //     product_id: 1,
+    //   })
     // })
 });

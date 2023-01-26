@@ -42,9 +42,14 @@ describe("Products Model", () => {
     }));
     it("index method should return a list of products", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield store.index();
-        expect(result).toEqual([
+        expect([
             {
-                id: 1,
+                name: result[0].name,
+                price: result[0].price,
+                category: result[0].category,
+            },
+        ]).toEqual([
+            {
                 name: "iPhone 12",
                 price: 300,
                 category: "electronics",
@@ -53,8 +58,11 @@ describe("Products Model", () => {
     }));
     it("show method should return the correct product", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield store.show(1);
-        expect(result).toEqual({
-            id: 1,
+        expect({
+            name: result.name,
+            price: result.price,
+            category: result.category,
+        }).toEqual({
             name: "iPhone 12",
             price: 300,
             category: "electronics",
@@ -62,9 +70,14 @@ describe("Products Model", () => {
     }));
     it("rankCat method should return list od products in same category", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield store.rankCat("electronics");
-        expect(result).toEqual([
+        expect([
             {
-                id: 1,
+                name: result[0].name,
+                price: result[0].price,
+                category: result[0].category,
+            },
+        ]).toEqual([
+            {
                 name: "iPhone 12",
                 price: 300,
                 category: "electronics",

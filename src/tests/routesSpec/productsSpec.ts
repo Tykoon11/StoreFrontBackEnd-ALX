@@ -29,7 +29,7 @@ describe("Test endpoint response", () => {
   it("gets the rankCat endpoint", async () => {
     const token = jwt.sign({ create: {} }, process.env.TOKEN_SECRET as string)
     const response = await request
-      .get("/ranks/rankcat")
+      .get("/products/rankcat")
       .set("Authorization", `Bearer ${token}`)
     expect(response.status).toBe(200)
   })

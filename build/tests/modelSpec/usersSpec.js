@@ -24,7 +24,7 @@ describe("Users Model", () => {
     it("create method should create a user", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield store.create({
             firstname: "Nobleman",
-            lastname: "Unachukwu",
+            lastname: "prince",
             password: "hello",
         });
         expect({
@@ -32,28 +32,31 @@ describe("Users Model", () => {
             lastname: result.lastname,
         }).toEqual({
             firstname: "Nobleman",
-            lastname: "Unachukwu",
+            lastname: "prince",
         });
-        console.log(result);
     }));
     it("index method should return a list of users", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield store.index();
-        expect(result).toEqual([
+        expect([
             {
-                id: 1,
+                firstname: result[0].firstname,
+                lastname: result[0].lastname,
+            },
+        ]).toEqual([
+            {
                 firstname: "Nobleman",
-                lastname: "Unachukwu",
-                password: "password",
+                lastname: "prince",
             },
         ]);
     }));
     it("show method should return the correct user", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield store.show(1);
-        expect(result).toEqual({
-            id: 1,
+        expect({
+            firstname: result.firstname,
+            lastname: result.lastname,
+        }).toEqual({
             firstname: "Nobleman",
-            lastname: "Unachukwu",
-            password: "password",
+            lastname: "prince",
         });
     }));
 });

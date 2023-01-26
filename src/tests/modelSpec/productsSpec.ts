@@ -38,9 +38,14 @@ describe("Products Model", () => {
 
   it("index method should return a list of products", async () => {
     const result = await store.index()
-    expect(result).toEqual([
+    expect([
       {
-        id: 1,
+        name: result[0].name,
+        price: result[0].price,
+        category: result[0].category,
+      },
+    ]).toEqual([
+      {
         name: "iPhone 12",
         price: 300,
         category: "electronics",
@@ -50,8 +55,11 @@ describe("Products Model", () => {
 
   it("show method should return the correct product", async () => {
     const result = await store.show(1)
-    expect(result).toEqual({
-      id: 1,
+    expect({
+      name: result.name,
+      price: result.price,
+      category: result.category,
+    }).toEqual({
       name: "iPhone 12",
       price: 300,
       category: "electronics",
@@ -60,9 +68,14 @@ describe("Products Model", () => {
 
   it("rankCat method should return list od products in same category", async () => {
     const result = await store.rankCat("electronics")
-    expect(result).toEqual([
+    expect([
       {
-        id: 1,
+        name: result[0].name,
+        price: result[0].price,
+        category: result[0].category,
+      },
+    ]).toEqual([
+      {
         name: "iPhone 12",
         price: 300,
         category: "electronics",

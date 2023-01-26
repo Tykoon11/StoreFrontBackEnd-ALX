@@ -49,7 +49,7 @@ export class OrderStore {
     quantity: number,
     order_id: number,
     product_id: number
-  ): Promise<Order> {
+  ): Promise<{ quantity: number; order_id: number; product_id: number }> {
     // Checking if order is closed
     try {
       const orderSql = "SELECT * FROM orders WHERE id=($1)"

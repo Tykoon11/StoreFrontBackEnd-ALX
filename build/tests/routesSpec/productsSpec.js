@@ -37,7 +37,7 @@ describe("Test endpoint response", () => {
     it("gets the rankCat endpoint", () => __awaiter(void 0, void 0, void 0, function* () {
         const token = jsonwebtoken_1.default.sign({ create: {} }, process.env.TOKEN_SECRET);
         const response = yield request
-            .get("/ranks/rankcat")
+            .get("/products/rankcat")
             .set("Authorization", `Bearer ${token}`);
         expect(response.status).toBe(200);
     }));
