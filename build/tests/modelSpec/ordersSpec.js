@@ -10,8 +10,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const orders_1 = require("../../models/orders");
+const users_1 = require("../../models/users");
 const store = new orders_1.OrderStore();
+const usersStore = new users_1.UsersStore();
+let user;
 describe("Order Model", () => {
+    beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
+        user = yield usersStore.create({
+            firstname: "Nobleman",
+            lastname: "prince",
+            password: "hello",
+        });
+    }));
     it("should have a create method", () => {
         expect(store.create).toBeDefined();
     });
@@ -26,26 +36,26 @@ describe("Order Model", () => {
     });
     it("create method should create an order", () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield store.create({
-            user_id: 1,
+            user_id: user.id,
             status: "complete",
         });
         expect({
             user_id: result.user_id,
             status: result.status,
         }).toEqual({
-            user_id: 1,
+            user_id: user.id,
             status: "complete",
         });
     }));
     it("show method should return the correct order", () => __awaiter(void 0, void 0, void 0, function* () {
-        const result = yield store.show(1);
+        const result = yield store.show(user.id);
         expect({ user_id: result.user_id, status: result.status }).toEqual({
-            user_id: 1,
+            user_id: user.id,
             status: "complete",
         });
     }));
     it("completeOrder method should return list of complete orders", () => __awaiter(void 0, void 0, void 0, function* () {
-        const result = yield store.completeOrder(1);
+        const result = yield store.completeOrder(user.id);
         expect([
             {
                 user_id: result[0].user_id,
@@ -53,20 +63,9 @@ describe("Order Model", () => {
             },
         ]).toEqual([
             {
-                user_id: 1,
+                user_id: user.id,
                 status: "complete",
             },
         ]);
     }));
-    // it("addProduct method should return updated order", async () => {
-    //   const quantity = 3
-    //   const order_id = 1
-    //   const product_id = 1
-    //   const result = await store.addProduct(quantity, order_id, product_id)
-    //   expect(result).toEqual({
-    //     quantity: 3,
-    //     order_id: 1,
-    //     product_id: 1,
-    //   })
-    // })
 });

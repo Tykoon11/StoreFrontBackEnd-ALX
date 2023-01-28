@@ -47,7 +47,7 @@ describe("Products Model", () => {
     ]).toEqual([
       {
         name: "iPhone 12",
-        price: 300,
+        price: Number(`${300}`),
         category: "electronics",
       },
     ])

@@ -53,6 +53,7 @@ export class UsersStore {
       conn.release()
       return result.rows[0]
     } catch (err) {
+      console.log(err)
       throw new Error(`cannot create this user ${err}`)
     }
   }
