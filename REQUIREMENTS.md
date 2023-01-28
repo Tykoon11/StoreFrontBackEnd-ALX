@@ -5,20 +5,20 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## API Endpoints
 #### Products
-- Index 
-- Show
-- Create [token required]
-- [OPTIONAL] Top 5 most popular products 
-- [OPTIONAL] Products by category (args: product category)
+- Index - `http://localhost:3000/products` (GET)
+- Show - `http://localhost:3000/products/show` (GET)
+- Create [token required] `http://localhost:3000/products/create` (POST)
+- [OPTIONAL] Top 5 most popular products - `http://localhost:3000/ranks/topfive` (GET)
+- [OPTIONAL] Products by category (args: product category) - `http://localhost:3000/products/rankcat` (GET)
 
 #### Users
-- Index [token required]
-- Show [token required]
-- Create N[token required]
+- Index [token required] - `http://localhost:3000/users` (GET)
+- Show [token required] - `http://localhost:3000/users/show` (GET)
+- Create N[token required] - `http://localhost:3000/users/create` (POST)
 
 #### Orders
-- Current Order by user (args: user id)[token required]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]
+- Current Order by user (args: user id)[token required] - `http://localhost:3000/orders/show` (GET)
+- [OPTIONAL] Completed Orders by user (args: user id)[token required] - `http://localhost:3000/orders/complete` (GET)
 
 ## Data Shapes
 #### Product
