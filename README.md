@@ -4,15 +4,15 @@ Setting up the database:
 Create and env folder specifying the values required in the database.ts file to connect to the database.
 
 // environment variables
-POSTGRES_HOST = 127.0.0.1
-POSTGRES_USER = tykoon
-POSTGRES_DATABASE = supa_mart
-POSTGRES_TEST_DATABASE = supa_mart_test
-POSTGRES_PASSWORD = password123
-ENV = test
-BCRYPT_PASSWORD = super_secret
-SALT_ROUNDS = 10
-TOKEN_SECRET = udacity
+POSTGRES_HOST
+POSTGRES_USER
+POSTGRES_DATABASE
+POSTGRES_TEST_DATABASE
+POSTGRES_PASSWORD 
+ENV
+BCRYPT_PASSWORD
+SALT_ROUNDS
+TOKEN_SECRET 
 
 
 Run the following command: db-migrate up
