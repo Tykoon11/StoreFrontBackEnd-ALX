@@ -4,11 +4,11 @@ Setting up the database:
 Create and env folder specifying the values required in the database.ts file to connect to the database.
 
 // environment variables
+PORT
 POSTGRES_HOST
 POSTGRES_USER
 POSTGRES_DATABASE
 POSTGRES_TEST_DATABASE
-POSTGRES_PASSWORD 
 ENV
 BCRYPT_PASSWORD
 SALT_ROUNDS
