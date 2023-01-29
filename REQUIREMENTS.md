@@ -34,7 +34,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - price
 - [OPTIONAL] category
 
-- CREATE TABLE products (id SERIAL PRIMARY KEY, name VARCHAR(50), price integer, category VARCHAR(50));
+- TABLE products (id SERIAL PRIMARY KEY, name VARCHAR(50), price integer, category VARCHAR(50));
 
 #### User
 
@@ -43,7 +43,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - lastName
 - password
 
-- CREATE TABLE users (id SERIAL PRIMARY KEY, firstname VARCHAR(50), lastname VARCHAR(50), password VARCHAR(255));
+- TABLE users (id SERIAL PRIMARY KEY, firstname VARCHAR(50), lastname VARCHAR(50), password VARCHAR(255));
 
 #### Orders
 
@@ -53,5 +53,5 @@ These are the notes from a meeting with the frontend developer that describe wha
 - user_id
 - status of order (active or complete)
 
-- CREATE TABLE orders (id SERIAL PRIMARY KEY, user_id integer REFERENCES users(id), status text);
-- CREATE TABLE orders_products (id SERIAL PRIMARY KEY, quantity bigint, order_id bigint REFERENCES orders(id), product_id bigint REFERENCES products(id));
+- TABLE orders (id SERIAL PRIMARY KEY, user_id integer REFERENCES users(id), status text);
+- TABLE orders_products (id SERIAL PRIMARY KEY, quantity bigint, order_id bigint REFERENCES orders(id), product_id bigint REFERENCES products(id));
