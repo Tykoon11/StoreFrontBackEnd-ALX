@@ -18,7 +18,7 @@ const verifyToken = (
     next()
   } catch (error) {
     res.status(401)
-    res.send("Invalid token:")
+    res.send(`Invalid token: ${error}`)
   }
 }
 

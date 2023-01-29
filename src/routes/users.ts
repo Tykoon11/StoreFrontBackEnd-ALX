@@ -11,7 +11,7 @@ users.get(
   "/",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
-    const user = await new UsersStore()
+    const user = new UsersStore()
     try {
       const result = await user.index()
       res.send(result)
@@ -25,7 +25,7 @@ users.get(
   "/show",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
-    const user = await new UsersStore()
+    const user = new UsersStore()
     const id = req.body.id as number
     try {
       const result = await user.show(id)
@@ -37,7 +37,7 @@ users.get(
 )
 
 users.post("/create", async (req: express.Request, res: express.Response) => {
-  const user = await new UsersStore()
+  const user = new UsersStore()
   const firstname = req.body.firstname as string
   const lastname = req.body.lastname as string
   const password = req.body.password as string

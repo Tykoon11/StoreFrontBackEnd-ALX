@@ -8,7 +8,7 @@ orders.get(
   "/show",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
-    const order = await new OrderStore()
+    const order = new OrderStore()
     const userId = req.body.userId as number
     try {
       const result = await order.show(userId)
@@ -23,7 +23,7 @@ orders.get(
   "/complete",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
-    const order = await new OrderStore()
+    const order = new OrderStore()
     const userId = req.body.userId as number
     try {
       const result = await order.completeOrder(userId)
@@ -38,7 +38,7 @@ orders.post(
   "/create",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
-    const order = await new OrderStore()
+    const order = new OrderStore()
     const userId = req.body.userId as number
     const status = req.body.status as string
 

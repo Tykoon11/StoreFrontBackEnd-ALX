@@ -5,7 +5,7 @@ import verifyToken from "../handlers/verifyToken"
 const products = express.Router()
 
 products.get("/", async (req: express.Request, res: express.Response) => {
-  const product = await new ProductsStore()
+  const product = new ProductsStore()
   try {
     const result = await product.index()
     res.send(result)
@@ -15,7 +15,7 @@ products.get("/", async (req: express.Request, res: express.Response) => {
 })
 
 products.get("/show", async (req: express.Request, res: express.Response) => {
-  const product = await new ProductsStore()
+  const product = new ProductsStore()
   const id = req.body.id as number
   try {
     const result = await product.show(id)
@@ -29,7 +29,7 @@ products.post(
   "/create",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
-    const product = await new ProductsStore()
+    const product = new ProductsStore()
 
     const name = req.body.name as string
     const price = req.body.price as number
@@ -53,7 +53,7 @@ products.get(
   "/rankcat",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
-    const product = await new ProductsStore()
+    const product = new ProductsStore()
     const category = req.body.category as string
     try {
       const result = await product.rankCat(category)
