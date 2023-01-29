@@ -54,4 +54,4 @@ These are the notes from a meeting with the frontend developer that describe wha
 - status of order (active or complete)
 
 - TABLE orders (id SERIAL PRIMARY KEY, user_id integer REFERENCES users(id), status text);
-- TABLE orders_products (id SERIAL PRIMARY KEY, quantity bigint, order_id bigint REFERENCES orders(id), product_id bigint REFERENCES products(id));
+- TABLE orders_products (id SERIAL PRIMARY KEY, quantity bigint, order_id bigint REFERENCES orders(id), product_id bigint REFERENCES products (id));
