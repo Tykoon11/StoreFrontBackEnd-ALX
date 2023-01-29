@@ -5,13 +5,13 @@ import verifyToken from "../handlers/verifyToken"
 const orders = express.Router()
 
 orders.get(
-  "/show",
+  "/:id/show",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
     const order = new OrderStore()
-    const userId = req.body.userId as number
+    const userId = req.params.userId
     try {
-      const result = await order.show(userId)
+      const result = await order.show(userId as unknown as number)
       res.send(result)
     } catch (err) {
       res.send(`unable to show this order ${err}`)
@@ -20,11 +20,11 @@ orders.get(
 )
 
 orders.get(
-  "/complete",
+  "/:id/complete",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
     const order = new OrderStore()
-    const userId = req.body.userId as number
+    const userId = req.params.userId as unknown as number
     try {
       const result = await order.completeOrder(userId)
       res.send(result)

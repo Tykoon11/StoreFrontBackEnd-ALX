@@ -10,7 +10,7 @@ dotenv.config()
 users.get(
   "/",
   verifyToken,
-  async (req: express.Request, res: express.Response) => {
+  async (_req: express.Request, res: express.Response) => {
     const user = new UsersStore()
     try {
       const result = await user.index()
@@ -22,11 +22,11 @@ users.get(
 )
 
 users.get(
-  "/show",
+  "/:id/show",
   verifyToken,
   async (req: express.Request, res: express.Response) => {
     const user = new UsersStore()
-    const id = req.body.id as number
+    const id = req.params.id as unknown as number
     try {
       const result = await user.show(id)
       res.send(result)

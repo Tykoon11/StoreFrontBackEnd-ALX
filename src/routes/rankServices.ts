@@ -3,7 +3,7 @@ import { rankService } from "../services/rankServices"
 
 const ranks = express.Router()
 
-ranks.get("/topfive", async (req: express.Request, res: express.Response) => {
+ranks.get("/topfive", async (_req: express.Request, res: express.Response) => {
   const rank = new rankService()
   try {
     const result = await rank.rankTopFive()

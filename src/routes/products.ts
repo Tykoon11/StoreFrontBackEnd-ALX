@@ -14,16 +14,19 @@ products.get("/", async (req: express.Request, res: express.Response) => {
   }
 })
 
-products.get("/show", async (req: express.Request, res: express.Response) => {
-  const product = new ProductsStore()
-  const id = req.body.id as number
-  try {
-    const result = await product.show(id)
-    res.send(result)
-  } catch (err) {
-    res.send(`unable to get product ${err}`)
+products.get(
+  "/:id/show",
+  async (req: express.Request, res: express.Response) => {
+    const product = new ProductsStore()
+    const id = req.params.id as unknown as number
+    try {
+      const result = await product.show(id)
+      res.send(result)
+    } catch (err) {
+      res.send(`unable to get product ${err}`)
+    }
   }
-})
+)
 
 products.post(
   "/create",
